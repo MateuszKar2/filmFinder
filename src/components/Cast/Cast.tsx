@@ -4,9 +4,18 @@ import { useParams } from 'react-router-dom';
 import { fetchMovieCast } from 'services/api';
 import { CastHeader, CastInfo, CastList, CastListItem, CastName, NoCastText, Wrapper } from './Cast.styled';
 
+interface Actor {
+    id: number,
+    actor: string,
+    profile_path: string,
+    name: string,
+    character: string,
+};
+
+
 const Cast = () => {
     const { movieId } = useParams();
-    const [ cast, setCast ] = useState([]);
+    const [ cast, setCast ] = useState<Actor[]>([]);
 
 
     useEffect(() => {

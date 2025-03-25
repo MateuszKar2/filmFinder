@@ -1,7 +1,21 @@
-import PropTypes from 'prop-types';
 import { StyledSection, StyledLink, SectionTitle, List, ListItem } from './MovieList.styled';
 
-const MovieList = ({ trendingMovies }) => {
+
+interface Movie {
+        id: number,
+        title: string,
+        release_date: string,
+        overview: string,
+        poster_path: string,
+        vote_average: string,
+        };
+
+interface DataPictures {
+    trendingMovies: Movie[];
+};
+
+
+const MovieList = ({ trendingMovies }: DataPictures) => {
     return (
         <StyledSection>
             <SectionTitle>Trending today</SectionTitle>
@@ -21,16 +35,3 @@ const MovieList = ({ trendingMovies }) => {
 
 export default MovieList;
 
-MovieList.propTypes = {
-
-    trendingMovies: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            release_date: PropTypes.string.isRequired,
-            overview: PropTypes.string.isRequired,
-            poster_path: PropTypes.string,
-            vote_average: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-};

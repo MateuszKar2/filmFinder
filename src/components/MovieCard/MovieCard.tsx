@@ -1,22 +1,24 @@
 
 import { useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import {
-  Img,
-  List,
-  ListItem,
-  MoreInfoHeader,
-  MoreInfoWrapper,
-  MovieCardContainer,
-  MovieInfo,
-  MovieInfoText,
-  MovieInfoTextBold,
-  MovieName,
-  StyledLink,
-} from './MovieCard.styled';
+import {Img,List,ListItem,MoreInfoHeader,MoreInfoWrapper,MovieCardContainer,MovieInfo,MovieInfoText,MovieInfoTextBold,MovieName,StyledLink} from './MovieCard.styled';
 import { LoadingIndicator } from 'components/SharedLayout/LoadingDots';
 
-const MovieCard = ({ movie }) => {
+
+interface Film {
+  title: string;
+  release_date: string;
+    poster_path: string
+    vote_average: number,
+    overview: string,
+    genres: { name: string}[],
+};
+
+interface Movie {
+  movie: Film
+};
+
+
+const MovieCard = ({ movie }: Movie) => {
   const { title, release_date, poster_path, vote_average, overview, genres } =
     movie;
   const location = useLocation();
@@ -88,17 +90,6 @@ const MovieCard = ({ movie }) => {
   );
 };
 
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
-    poster_path: PropTypes.string.isRequired,
-    vote_average: PropTypes.number,
-    overview: PropTypes.string,
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({ name: PropTypes.string.isRequired })
-    ),
-  }).isRequired,
-};
+
 
 export default MovieCard;
