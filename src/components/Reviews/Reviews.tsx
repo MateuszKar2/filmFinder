@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import { fetchMovieReviews } from "services/api";
+import { fetchMovieReviews } from "services/api"
 import { Author, NoReviewsText, Rewiev, RewievHeader, RewievList, RewievListItem, Wrapper } from "./Reviews.styled";
 
 
